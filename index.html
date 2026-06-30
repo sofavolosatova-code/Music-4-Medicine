@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Music 4 Medicine</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --blue: #1e6fff;
+  --blue-bright: #4d8fff;
+  --sky: #e8f2ff;
+  --electric: #00b4ff;
+  --white: #ffffff;
+  --off-white: #f7faff;
+  --text: #0d1c36;
+  --muted: #6b80a0;
+  --accent: #ff6b6b;
+  --green: #00d68f;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 200;
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, box-shadow .4s;
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 24px rgba(30,111,255,0.08);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem; font-weight: 800;
+  color: var(--white);
+  transition: color .4s;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+nav.scrolled .nav-logo { color: var(--blue); }
+.nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; flex-wrap: nowrap; white-space: nowrap; }
+.nav-links .navlink {
+  font-size: .78rem; font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  transition: color .3s;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+nav.scrolled .nav-links .navlink { color: var(--muted); }
+.nav-links .navlink:hover { color: var(--blue-bright) !important; }
+.nav-cta {
+  background: white; color: var(--blue) !important;
+  padding: .45rem 1.1rem; border-radius: 999px;
+  font-weight: 700; font-size: .8rem;
+  text-decoration: none;
+  transition: all .3s;
+}
+nav.scrolled .nav-cta { background: var(--blue); color: white !important; }
+.nav-cta:hover { transform: scale(1.05); }
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e6fff 0%, #38a8e0 50%, #a8dff5 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(60px); opacity: .35; pointer-events: none;
+}
+.blob1 { width: 500px; height: 500px; background: #00d2ff; top: -100px; right: -100px; }
+.blob2 { width: 400px; height: 400px; background: #1e6fff; bottom: -80px; left: -80px; }
+.blob3 { width: 300px; height: 300px; background: #ffffff; top: 40%; left: 10%; opacity: .12; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white; font-size: .78rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: .45rem 1.1rem; border-radius: 999px;
+  margin-bottom: 2rem;
+  animation: fadeUp .8s ease both;
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 800; color: white;
+  line-height: 1.05; letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .8s .15s ease both;
+}
+.hero h1 .highlight {
+  position: relative; display: inline-block;
+}
+.hero h1 .highlight::after {
+  content: '';
+  position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.4);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.88);
+  max-width: 560px; line-height: 1.75; font-weight: 400;
+  margin-bottom: 2.5rem;
+  animation: fadeUp .8s .3s ease both;
+}
+
+.hero-btns {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp .8s .45s ease both;
+}
+.btn {
+  padding: .85rem 2rem; border-radius: 999px;
+  font-size: .9rem; font-weight: 700;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all .25s; display: inline-block;
+}
+.btn-white { background: white; color: var(--blue); }
+.btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+.btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1.5px solid rgba(255,255,255,0.45); }
+.btn-ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+
+.hero-scroll {
+  position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  color: rgba(255,255,255,0.6); font-size: .72rem; letter-spacing: 2px;
+  text-transform: uppercase; animation: bounce 2s infinite;
+}
+.hero-scroll::after {
+  content: ''; width: 1px; height: 40px;
+  background: rgba(255,255,255,0.3);
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+.stats-strip {
+  background: var(--blue);
+  padding: 2rem;
+  display: flex; justify-content: center; flex-wrap: wrap;
+}
+.stat-item {
+  padding: 1rem 3rem; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  flex: 1; min-width: 150px;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem; font-weight: 800; color: white;
+  display: block; line-height: 1;
+}
+.stat-label { color: rgba(255,255,255,0.65); font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: .35rem; }
+
+section { padding: 7rem 2rem; }
+.section-inner { max-width: 1060px; margin: 0 auto; }
+.eyebrow {
+  font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--blue);
+  margin-bottom: .75rem; display: block;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800; letter-spacing: -1px;
+  line-height: 1.1; color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.about { background: var(--off-white); }
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-size: .98rem; }
+.about-visual {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--electric) 100%);
+  border-radius: 24px; padding: 3rem 2.5rem;
+  color: white; position: relative; overflow: hidden;
+}
+.about-visual::before {
+  content: '🎻';
+  position: absolute; font-size: 8rem;
+  top: -1rem; right: -1rem; opacity: .15;
+}
+.about-visual h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: .5rem; }
+.about-visual p { color: rgba(255,255,255,0.82); font-size: .92rem; line-height: 1.75; }
+.about-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.2); border-radius: 999px;
+  padding: .3rem .9rem; font-size: .72rem; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.about-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: 1.5rem; background: white; color: var(--blue);
+  padding: .6rem 1.4rem; border-radius: 999px;
+  font-size: .82rem; font-weight: 700; text-decoration: none;
+  transition: transform .25s, box-shadow .25s;
+}
+.about-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+.impact { background: white; }
+.impact-inner { text-align: center; max-width: 700px; margin: 0 auto; }
+.impact-inner > p { color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
+.raised-display {
+  background: linear-gradient(135deg, #e8f2ff 0%, #d0e8ff 100%);
+  border-radius: 24px; padding: 3rem 2rem;
+  margin-bottom: 2rem; position: relative; overflow: hidden;
+}
+.raised-display::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--electric));
+}
+.raised-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 5.5rem; font-weight: 800;
+  color: var(--blue); line-height: 1;
+  display: block; margin-bottom: .5rem;
+}
+.raised-sub { color: var(--muted); font-size: .9rem; }
+.progress-wrap { background: white; border-radius: 999px; height: 8px; margin: 2rem auto 0; max-width: 400px; overflow: hidden; }
+.progress-bar {
+  height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--blue), var(--electric));
+  width: 0; transition: width 1.8s cubic-bezier(.4,0,.2,1);
+}
+.impact-note { color: var(--muted); font-size: .82rem; margin-top: .75rem; }
+
+.donate-section { background: var(--off-white); padding: 5rem 2rem; text-align: center; }
+.donate-note {
+  display: block;
+  background: var(--sky); border-left: 4px solid var(--blue);
+  border-radius: 8px; padding: .85rem 1.4rem;
+  color: var(--blue); font-size: .85rem; font-weight: 600;
+  max-width: 480px; margin: 0 auto 3rem; text-align: center;
+}
+.donate-cards {
+  display: flex; flex-direction: row; gap: 1rem; justify-content: center; flex-wrap: wrap;
+}
+.donate-card {
+  display: inline-flex; align-items: center; gap: .75rem;
+  padding: 1rem 2rem; border-radius: 999px;
+  font-weight: 700; font-size: .95rem;
+  text-decoration: none; transition: all .3s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border: none; cursor: pointer;
+}
+.donate-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.18); }
+.donate-card-venmo { background: #008CFF; color: white; }
+.donate-card-paypal { background: #003087; color: white; }
+.donate-card-icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.updates-section { background: white; }
+.updates-feed { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; max-width: 720px; }
+.update-card {
+  display: flex; align-items: center; gap: 1.5rem;
+  background: var(--off-white); border: 1.5px solid #e8edf5;
+  border-radius: 18px; padding: 1.5rem 1.75rem;
+  text-decoration: none; color: var(--text);
+  transition: all .3s;
+}
+.update-card:hover { border-color: var(--blue-bright); transform: translateX(4px); box-shadow: 0 12px 32px rgba(30,111,255,0.1); }
+.update-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue), var(--electric));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0; color: white;
+}
+.update-body { flex: 1; }
+.update-tag { font-size: .7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: .25rem; }
+.update-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .25rem; }
+.update-desc { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+.update-arrow { font-size: 1.3rem; color: var(--blue); flex-shrink: 0; }
+
+.perf-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.perf-card {
+  background: white; border-radius: 20px; padding: 2rem;
+  border: 1.5px solid #e8edf5;
+  transition: all .3s; position: relative; overflow: hidden;
+}
+.perf-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(30,111,255,0.1); border-color: rgba(30,111,255,0.25); }
+.perf-card.active {
+  background: linear-gradient(135deg, var(--blue), #0099cc);
+  border-color: transparent;
+}
+.perf-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.perf-loc {
+  font-size: .72rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: .4rem;
+}
+.perf-card.active .perf-loc { color: rgba(255,255,255,0.7); }
+.perf-card h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; margin-bottom: .6rem; color: var(--text); }
+.perf-card.active h3 { color: white; }
+.perf-card p { font-size: .85rem; line-height: 1.7; color: var(--muted); }
+.perf-card.active p { color: rgba(255,255,255,0.8); }
+.perf-badge {
+  display: inline-block; margin-top: 1rem;
+  background: rgba(0,214,143,0.12); color: var(--green);
+  border-radius: 999px; padding: .3rem .85rem;
+  font-size: .72rem; font-weight: 700;
+}
+.perf-card.active .perf-badge { background: rgba(255,255,255,0.2); color: white; }
+.perf-coming {
+  border: 2px dashed #d0daf0; background: transparent;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  color: var(--muted); min-height: 200px; font-size: .85rem; gap: .5rem;
+}
+.perf-coming span { font-size: 1.8rem; }
+
+.hospital { background: white; }
+.hospital-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.hospital-text p { color: var(--muted); line-height: 1.85; font-size: .97rem; margin-bottom: 1rem; }
+.hospital-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.pill { background: var(--sky); color: var(--blue); border-radius: 999px; padding: .4rem 1rem; font-size: .78rem; font-weight: 600; }
+.hospital-quote {
+  background: linear-gradient(135deg, #1e6fff, #00b4ff);
+  border-radius: 24px; padding: 2.5rem; color: white;
+  font-size: 1.25rem; font-family: 'Syne', sans-serif; line-height: 1.5;
+  position: relative;
+}
+.hospital-quote::before { content: '"'; font-size: 6rem; position: absolute; top: -1rem; left: 1.5rem; opacity: .2; font-family: Georgia; }
+.hospital-quote .attr { font-size: .78rem; font-weight: 400; opacity: .7; margin-top: 1rem; display: block; font-family: 'Inter', sans-serif; }
+
+.expand { background: var(--off-white); }
+.expand-lead { color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
+.expand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.expand-card {
+  background: white; border-radius: 20px; padding: 1.75rem;
+  border: 1.5px solid #e8edf5; transition: all .3s;
+}
+.expand-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(30,111,255,0.1); }
+.expand-card .icon { font-size: 1.75rem; margin-bottom: .75rem; display: block; }
+.expand-card h4 { font-family: 'Syne', sans-serif; font-size: 1rem; margin-bottom: .5rem; }
+.expand-card p { color: var(--muted); font-size: .83rem; line-height: 1.65; }
+
+.youtube-section { background: linear-gradient(135deg, #1e6fff 0%, #00b4ff 100%); padding: 6rem 2rem; text-align: center; }
+.youtube-section .section-title { color: white; }
+.youtube-section .eyebrow { color: rgba(255,255,255,0.7); }
+.youtube-section > .section-inner > p { color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; }
+.yt-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.yt-btn {
+  display: inline-flex; align-items: center; gap: .75rem;
+  background: white; color: #ff0000;
+  padding: 1rem 2.2rem; border-radius: 999px;
+  text-decoration: none; font-weight: 800; font-size: .95rem;
+  transition: all .3s; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.yt-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 40px rgba(0,0,0,0.2); }
+.yt-btn-outline {
+  background: rgba(255,255,255,0.15); color: white;
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.yt-btn-outline:hover { background: rgba(255,255,255,0.25); color: white; }
+
+footer { background: var(--text); padding: 3.5rem 2rem; text-align: center; }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: white; margin-bottom: .5rem; }
+footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5rem; line-height: 1.7; }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.footer-links .navlink { color: rgba(255,255,255,0.45); font-size: .82rem; cursor: pointer; transition: color .3s; }
+.footer-links .navlink:hover { color: var(--blue-bright); }
+.footer-links a { color: rgba(255,255,255,0.45); font-size: .82rem; text-decoration: none; transition: color .3s; }
+.footer-links a:hover { color: var(--blue-bright); }
+
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .75s ease, transform .75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+@media(max-width:768px) {
+  .about-layout, .hospital-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .perf-cards, .expand-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  nav { padding: 1rem 1.5rem; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Music 4 Medicine</div>
+  <ul class="nav-links">
+    <li><span class="navlink" data-target="about">About</span></li>
+    <li><span class="navlink" data-target="impact">Impact</span></li>
+    <li><span class="navlink" data-target="performances">Performances</span></li>
+    <li><span class="navlink" data-target="updates">Updates</span></li>
+    <li><span class="navlink" data-target="cause">The Cause</span></li>
+    <li><span class="navlink" data-target="expand">Future</span></li>
+    <li><span class="navlink" data-target="donate" style="color:#ffdd57 !important;font-weight:700;">Donate</span></li>
+    <li><a href="https://www.youtube.com/@enchanted_violin" target="_blank" class="nav-cta">Watch</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+  <div class="hero-eyebrow"><span>🎻</span> A violin. A mission. Real impact.</div>
+  <h1>Music heals in more<br/>ways than <span class="highlight">one.</span></h1>
+  <p class="hero-sub">Sofia V is a 17-year-old violinist performing in Central Park and on YouTube, raising money for patients who can't afford to get better.</p>
+  <div class="hero-btns">
+    <span class="btn btn-white" data-target="impact">See Our Impact</span>
+    <span class="btn btn-ghost" data-target="about">Our Story</span>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item reveal"><span class="stat-num">$696</span><span class="stat-label">Raised So Far</span></div>
+  <div class="stat-item reveal reveal-delay-1"><span class="stat-num">2</span><span class="stat-label">Performance + YouTube</span></div>
+  <div class="stat-item reveal reveal-delay-2"><span class="stat-num">1</span><span class="stat-label">Donation Sent</span></div>
+  <div class="stat-item reveal reveal-delay-3"><span class="stat-num">100%</span><span class="stat-label">Goes to Patients</span></div>
+</div>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-layout">
+      <div class="about-text reveal">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title">Where music meets medicine</h2>
+        <p>Sofia V has been playing violin since age 8. During COVID, she started recording videos, and what began as a way to share music became a YouTube channel, then a street performance in Central Park, and now a full-on fundraising mission.</p>
+        <p>Music 4 Medicine is about the idea that music doesn't just move you emotionally. It can change the material reality of someone's life. Every dollar raised goes directly to Bergen New Bridge Medical Center to keep care accessible for those who need it most.</p>
+        <p><strong>Music as a force for healing, in every sense of the word.</strong></p>
+      </div>
+      <div class="about-visual reveal reveal-delay-1">
+        <span class="about-tag">Enchanted Violin</span>
+        <h3>Sofia V</h3>
+        <p>17 years old. Playing since she was 8. Performing in Central Park, recording covers on YouTube, and using every note to make a difference for underserved patients in New Jersey.</p>
+        <a href="https://www.youtube.com/@enchanted_violin" target="_blank" class="about-link">Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact" id="impact">
+  <div class="section-inner">
+    <div class="impact-inner">
+      <span class="eyebrow reveal">Real Impact</span>
+      <h2 class="section-title reveal">Every dollar goes straight to patients</h2>
+      <p class="reveal">No admin fees. No overhead. Just music turning into medicine for people who can't afford care.</p>
+      <div class="raised-display reveal">
+        <span class="raised-amount" id="counter">$0</span>
+        <span class="raised-sub">raised across performances and YouTube donations</span>
+        <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
+        <p class="impact-note">First donation of $696 sent to Bergen New Bridge</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="donate-section" id="donate">
+  <div class="section-inner">
+    <span class="eyebrow reveal">Support the Mission</span>
+    <h2 class="section-title reveal">Every dollar makes a difference</h2>
+    <p class="reveal" style="color:var(--muted);max-width:480px;margin:0 auto 2rem;line-height:1.8;">100% of donations go directly to Bergen New Bridge Medical Center to support underserved patients.</p>
+    <div class="donate-note reveal">
+      Please include a note saying <strong>"Music 4 Medicine"</strong> with your donation so it can be tracked and credited!
+    </div>
+    <div class="donate-cards reveal">
+      <a href="https://venmo.com/u/sofiav31" target="_blank" class="donate-card donate-card-venmo">
+        <span class="donate-card-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.1 1.6c.4.7.6 1.5.6 2.5 0 3.1-2.6 7.2-4.8 10H9.6L7.1 2.5l5-.5 1.3 10.2c1.2-2 2.7-5.1 2.7-7.2 0-1.2-.2-2-.5-2.6l3.5-.8z"/></svg>
+        </span>
+        Donate via Venmo
+      </a>
+      <a href="https://www.paypal.com/paypalme/SofiaVolosatova" target="_blank" class="donate-card donate-card-paypal">
+        <span class="donate-card-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M7.1 22H3.5L6 7h6.3c2.7 0 4.7 1.8 4.3 4.7-.5 3.5-3 5.3-6 5.3H8.4L7.1 22zm1.7-6.7h1.6c1.4 0 2.5-.8 2.7-2.3.2-1.2-.5-2-1.8-2H9.7l-.9 4.3z"/></svg>
+        </span>
+        Donate via PayPal
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="updates-section" id="updates">
+  <div class="section-inner">
+    <span class="eyebrow reveal">Latest Updates</span>
+    <h2 class="section-title reveal">Follow along, post by post</h2>
+    <p class="reveal" style="color:var(--muted);max-width:540px;line-height:1.8;">A running log of performances, donations, and milestones as the mission grows.</p>
+    <div class="updates-feed reveal">
+      <a href="http://youtube.com/post/Ugkx1EzDeijnFeC_hCPa7EUwGVNw4UjXA0II" target="_blank" class="update-card">
+        <div class="update-icon">💙</div>
+        <div class="update-body">
+          <p class="update-tag">Milestone</p>
+          <p class="update-title">First Donation Sent</p>
+          <p class="update-desc">Confirmation that the first donation, $696, was sent to Bergen New Bridge Medical Center.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
+      <a href="https://youtu.be/Z9pV79XrxUM" target="_blank" class="update-card">
+        <div class="update-icon">🎻</div>
+        <div class="update-body">
+          <p class="update-tag">Street Performance</p>
+          <p class="update-title">Central Park Performance</p>
+          <p class="update-desc">Video from one of Sofia's Central Park street performances supporting the mission.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
+      <a href="https://youtu.be/IbWbk-4yoZM" target="_blank" class="update-card">
+        <div class="update-icon">🎻</div>
+        <div class="update-body">
+          <p class="update-tag">Street Performance</p>
+          <p class="update-title">Central Park Performance</p>
+          <p class="update-desc">Another look at Sofia performing live in Central Park for Music 4 Medicine.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
+      <a href="http://youtube.com/post/Ugkx4PJ7Ted8LCCvl6KMN2tSKO4Z8bp-OW2e" target="_blank" class="update-card">
+        <div class="update-icon">📝</div>
+        <div class="update-body">
+          <p class="update-tag">Performance Recap</p>
+          <p class="update-title">First Fundraising Performance</p>
+          <p class="update-desc">Recap post from Sofia's first Music 4 Medicine performance, which raised $263.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
+      <a href="https://youtu.be/SKUHIQF3_ag" target="_blank" class="update-card">
+        <div class="update-icon">🎬</div>
+        <div class="update-body">
+          <p class="update-tag">Introduction</p>
+          <p class="update-title">Meet Music 4 Medicine</p>
+          <p class="update-desc">The introductory video explaining the mission and how it all started.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="performances" id="performances">
+  <div class="section-inner">
+    <span class="eyebrow reveal">Live Performances</span>
+    <h2 class="section-title reveal">Taking the stage for a cause</h2>
+    <div class="perf-cards">
+      <div class="perf-card active reveal">
+        <span class="perf-icon">🎻</span>
+        <p class="perf-loc">Central Park, NYC</p>
+        <h3>Performance #1</h3>
+        <p>Sofia's first Music 4 Medicine street performance in Central Park raised $263 for Bergen New Bridge. While Sofia has performed on the streets before, this was the first dedicated to the mission.</p>
+        <span class="perf-badge">$263 Raised</span>
+      </div>
+      <div class="perf-card active reveal reveal-delay-1">
+        <span class="perf-icon">🎥</span>
+        <p class="perf-loc">YouTube, Enchanted Violin</p>
+        <h3>YouTube Donations</h3>
+        <p>Viewers of Sofia's YouTube channel contributed directly to the mission, helping push the total raised even further toward helping Bergen New Bridge patients.</p>
+        <span class="perf-badge">$433 Raised</span>
+      </div>
+      <div class="perf-card perf-coming reveal reveal-delay-2">
+        <span>📅</span>
+        <p>Follow on YouTube for updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hospital" id="cause">
+  <div class="section-inner">
+    <div class="hospital-layout">
+      <div class="hospital-text reveal">
+        <span class="eyebrow">The Cause</span>
+        <h2 class="section-title">Bergen New Bridge Medical Center</h2>
+        <p>Bergen New Bridge is New Jersey's largest hospital and one of its most important. As a safety net hospital, it serves thousands of patients who have nowhere else to turn: uninsured, underinsured, and those facing poverty, mental illness, and addiction.</p>
+        <p>These patients deserve quality care just as much as anyone else. Bergen New Bridge makes that possible, and Music 4 Medicine is proud to help them keep doing it.</p>
+        <div class="hospital-pills">
+          <span class="pill">Safety Net Hospital</span>
+          <span class="pill">NJ's Largest Hospital</span>
+          <span class="pill">Mental Health Care</span>
+          <span class="pill">Addiction Recovery</span>
+          <span class="pill">Underserved Patients</span>
+        </div>
+      </div>
+      <div class="hospital-quote reveal reveal-delay-1">
+        Music heals emotionally, but it can also heal physically, by funding the care that makes recovery possible.
+        <span class="attr">The heart of Music 4 Medicine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expand" id="expand">
+  <div class="section-inner">
+    <span class="eyebrow reveal">What's Next</span>
+    <h2 class="section-title reveal">More ways music can heal</h2>
+    <p class="expand-lead reveal">Music 4 Medicine is just getting started. Here's how we're thinking about growing the mission.</p>
+    <div class="expand-grid">
+      <div class="expand-card reveal"><span class="icon">🎪</span><h4>More Performances</h4><p>Expanding beyond Central Park to parks, events, and venues across NJ and NYC.</p></div>
+      <div class="expand-card reveal reveal-delay-1"><span class="icon">🤝</span><h4>Artist Collaborations</h4><p>Partnering with other musicians to amplify the sound, and the impact.</p></div>
+      <div class="expand-card reveal reveal-delay-2"><span class="icon">🎬</span><h4>YouTube Fundraisers</h4><p>Using live streams and YouTube's tools to reach a global audience.</p></div>
+      <div class="expand-card reveal"><span class="icon">🏥</span><h4>Hospital Visits</h4><p>Bringing live music directly to patients, because healing can happen just from listening.</p></div>
+      <div class="expand-card reveal reveal-delay-1"><span class="icon">🎉</span><h4>Charity Concerts</h4><p>Organized events with a bigger audience, bigger impact, and bigger donations.</p></div>
+      <div class="expand-card reveal reveal-delay-2"><span class="icon">💡</span><h4>Your Idea</h4><p>Have a way to help grow Music 4 Medicine? We're always open to new ideas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="youtube-section" id="watch">
+  <div class="section-inner">
+    <span class="eyebrow reveal">Watch & Support</span>
+    <h2 class="section-title reveal">Follow Sofia's journey</h2>
+    <p class="reveal">Every view, every subscriber, every share helps grow this mission.</p>
+    <div class="yt-links reveal">
+      <a href="https://www.youtube.com/@enchanted_violin" target="_blank" class="yt-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.3 2.7 12 2.7 12 2.7s-5.3 0-8.3.2c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.3 8 .3 9.8v1.7c0 1.8.2 3.6.2 3.6s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s5.3 0 8.3-.2c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.8.2-3.6V9.8c0-1.8-.2-3.6-.2-3.6zM9.7 15.5V8.1l6.3 3.7-6.3 3.7z"/></svg>
+        Enchanted Violin on YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--off-white); padding:5rem 2rem; text-align:center;" id="contact">
+  <div class="section-inner">
+    <span class="eyebrow reveal">Get Involved</span>
+    <h2 class="section-title reveal">Ideas? Collaborations? Say hello.</h2>
+    <p class="reveal" style="color:var(--muted);max-width:500px;margin:0 auto 2rem;line-height:1.8;">Have a way to help grow Music 4 Medicine? A collaboration idea, a suggestion, or just want to reach out? Sofia would love to hear from you.</p>
+    <a href="mailto:sofiaviolin2009@gmail.com" class="btn btn-white reveal" style="background:var(--blue);color:white;font-size:1rem;padding:1rem 2.5rem;box-shadow:0 8px 32px rgba(30,111,255,0.25);">sofiaviolin2009@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Music 4 Medicine</div>
+  <p>A project by Sofia V, Violinist, Fundraiser, Believer in the healing power of music.<br/>All donations support Bergen New Bridge Medical Center, Bergen County, NJ</p>
+  <div class="footer-links">
+    <span class="navlink" data-target="about">About</span>
+    <span class="navlink" data-target="impact">Impact</span>
+    <span class="navlink" data-target="performances">Performances</span>
+    <span class="navlink" data-target="cause">The Cause</span>
+    <span class="navlink" data-target="expand">Future</span>
+    <a href="https://www.youtube.com/@enchanted_violin" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script>
+function goTo(id) {
+  var el = document.getElementById(id);
+  if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+}
+
+var navEls = document.querySelectorAll('.navlink, [data-target]');
+for (var i = 0; i < navEls.length; i++) {
+  navEls[i].addEventListener('click', function() {
+    goTo(this.getAttribute('data-target'));
+  });
+}
+
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+var revealObserver = new IntersectionObserver(function(entries) {
+  for (var j = 0; j < entries.length; j++) {
+    if (entries[j].isIntersecting) { entries[j].target.classList.add('visible'); }
+  }
+}, { threshold: 0.12 });
+var revealEls = document.querySelectorAll('.reveal');
+for (var k = 0; k < revealEls.length; k++) { revealObserver.observe(revealEls[k]); }
+
+var counterEl = document.getElementById('counter');
+var pbar = document.getElementById('pbar');
+var counted = false;
+var counterObserver = new IntersectionObserver(function(entries) {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    pbar.style.width = '70%';
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) { startTime = ts; }
+      var p = Math.min((ts - startTime) / 1800, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      counterEl.textContent = '$' + Math.floor(ease * 696);
+      if (p < 1) { requestAnimationFrame(step); }
+      else { counterEl.textContent = '$696'; }
+    }
+    requestAnimationFrame(step);
+  }
+}, { threshold: 0.5 });
+counterObserver.observe(counterEl);
+</script>
+</body>
+</html>
