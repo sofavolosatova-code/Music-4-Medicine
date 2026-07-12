@@ -16,18 +16,11 @@
   --off-white: #f7faff;
   --text: #0d1c36;
   --muted: #6b80a0;
-  --accent: #ff6b6b;
   --green: #00d68f;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text);
-  overflow-x: hidden;
-}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
 nav {
   position: fixed; top: 0; width: 100%; z-index: 200;
@@ -35,301 +28,122 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   transition: background .4s, box-shadow .4s;
 }
-nav.scrolled {
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 24px rgba(30,111,255,0.08);
-}
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.25rem; font-weight: 800;
-  color: var(--white);
-  transition: color .4s;
-  letter-spacing: -0.5px;
-  cursor: pointer;
-}
+nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(30,111,255,0.08); }
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--white); transition: color .4s; cursor: pointer; }
 nav.scrolled .nav-logo { color: var(--blue); }
 .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; flex-wrap: nowrap; white-space: nowrap; }
-.nav-links .navlink {
-  font-size: .78rem; font-weight: 500;
-  color: rgba(255,255,255,0.85);
-  cursor: pointer;
-  transition: color .3s;
-  letter-spacing: .3px;
-  white-space: nowrap;
-}
+.nav-links .navlink { font-size: .78rem; font-weight: 500; color: rgba(255,255,255,0.85); cursor: pointer; transition: color .3s; white-space: nowrap; }
 nav.scrolled .nav-links .navlink { color: var(--muted); }
 .nav-links .navlink:hover { color: var(--blue-bright) !important; }
-.nav-cta {
-  background: white; color: var(--blue) !important;
-  padding: .45rem 1.1rem; border-radius: 999px;
-  font-weight: 700; font-size: .8rem;
-  text-decoration: none;
-  transition: all .3s;
-}
+.nav-cta { background: white; color: var(--blue) !important; padding: .45rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .3s; }
 nav.scrolled .nav-cta { background: var(--blue); color: white !important; }
-.nav-cta:hover { transform: scale(1.05); }
 
 .hero {
   min-height: 100vh;
   background: linear-gradient(135deg, #1e6fff 0%, #38a8e0 50%, #a8dff5 100%);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 8rem 2rem 5rem;
-  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
 }
-.hero-blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(60px); opacity: .35; pointer-events: none;
-}
+.hero-blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .35; pointer-events: none; }
 .blob1 { width: 500px; height: 500px; background: #00d2ff; top: -100px; right: -100px; }
 .blob2 { width: 400px; height: 400px; background: #1e6fff; bottom: -80px; left: -80px; }
 .blob3 { width: 300px; height: 300px; background: #ffffff; top: 40%; left: 10%; opacity: .12; }
-
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.35);
-  color: white; font-size: .78rem; font-weight: 600;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: .45rem 1.1rem; border-radius: 999px;
-  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35); color: white;
+  font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: .45rem 1.1rem; border-radius: 999px; margin-bottom: 2rem;
   animation: fadeUp .8s ease both;
 }
-
 .hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  font-weight: 800; color: white;
-  line-height: 1.05; letter-spacing: -1px;
-  margin-bottom: 1.5rem;
-  animation: fadeUp .8s .15s ease both;
+  font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 800; color: white; line-height: 1.05; letter-spacing: -1px;
+  margin-bottom: 1.5rem; animation: fadeUp .8s .15s ease both;
 }
-.hero h1 .highlight {
-  position: relative; display: inline-block;
-}
-.hero h1 .highlight::after {
-  content: '';
-  position: absolute; bottom: 4px; left: 0; right: 0;
-  height: 6px; border-radius: 3px;
-  background: rgba(255,255,255,0.4);
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255,255,255,0.88);
-  max-width: 560px; line-height: 1.75; font-weight: 400;
-  margin-bottom: 2.5rem;
-  animation: fadeUp .8s .3s ease both;
-}
-
-.hero-btns {
-  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-  animation: fadeUp .8s .45s ease both;
-}
-.btn {
-  padding: .85rem 2rem; border-radius: 999px;
-  font-size: .9rem; font-weight: 700;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: all .25s; display: inline-block;
-}
+.hero h1 .highlight { position: relative; display: inline-block; }
+.hero h1 .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.4); }
+.hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.88); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; animation: fadeUp .8s .3s ease both; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp .8s .45s ease both; }
+.btn { padding: .85rem 2rem; border-radius: 999px; font-size: .9rem; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all .25s; display: inline-block; }
 .btn-white { background: white; color: var(--blue); }
 .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
 .btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1.5px solid rgba(255,255,255,0.45); }
 .btn-ghost:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+.hero-scroll { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; color: rgba(255,255,255,0.6); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; animation: bounce 2s infinite; }
+.hero-scroll::after { content: ''; width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
 
-.hero-scroll {
-  position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  color: rgba(255,255,255,0.6); font-size: .72rem; letter-spacing: 2px;
-  text-transform: uppercase; animation: bounce 2s infinite;
-}
-.hero-scroll::after {
-  content: ''; width: 1px; height: 40px;
-  background: rgba(255,255,255,0.3);
-}
 @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
-.stats-strip {
-  background: var(--blue);
-  padding: 2rem;
-  display: flex; justify-content: center; flex-wrap: wrap;
-}
-.stat-item {
-  padding: 1rem 3rem; text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.15);
-  flex: 1; min-width: 150px;
-}
+.stats-strip { background: var(--blue); padding: 2rem; display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item { padding: 1rem 3rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); flex: 1; min-width: 150px; }
 .stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.4rem; font-weight: 800; color: white;
-  display: block; line-height: 1;
-}
+.stat-num { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: white; display: block; line-height: 1; }
 .stat-label { color: rgba(255,255,255,0.65); font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: .35rem; }
 
 section { padding: 7rem 2rem; }
 .section-inner { max-width: 1060px; margin: 0 auto; }
-.eyebrow {
-  font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: var(--blue);
-  margin-bottom: .75rem; display: block;
-}
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 800; letter-spacing: -1px;
-  line-height: 1.1; color: var(--text);
-  margin-bottom: 1.25rem;
-}
+.eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: .75rem; display: block; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--text); margin-bottom: 1.25rem; }
 
 .about { background: var(--off-white); }
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-text p { color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-size: .98rem; }
-.about-visual {
-  background: linear-gradient(135deg, var(--blue) 0%, var(--electric) 100%);
-  border-radius: 24px; padding: 3rem 2.5rem;
-  color: white; position: relative; overflow: hidden;
-}
-.about-visual::before {
-  content: '🎻';
-  position: absolute; font-size: 8rem;
-  top: -1rem; right: -1rem; opacity: .15;
-}
+.about-visual { background: linear-gradient(135deg, var(--blue) 0%, var(--electric) 100%); border-radius: 24px; padding: 3rem 2.5rem; color: white; position: relative; overflow: hidden; }
+.about-visual::before { content: '🎻'; position: absolute; font-size: 8rem; top: -1rem; right: -1rem; opacity: .15; }
 .about-visual h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: .5rem; }
 .about-visual p { color: rgba(255,255,255,0.82); font-size: .92rem; line-height: 1.75; }
-.about-tag {
-  display: inline-block;
-  background: rgba(255,255,255,0.2); border-radius: 999px;
-  padding: .3rem .9rem; font-size: .72rem; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.about-link {
-  display: inline-flex; align-items: center; gap: .5rem;
-  margin-top: 1.5rem; background: white; color: var(--blue);
-  padding: .6rem 1.4rem; border-radius: 999px;
-  font-size: .82rem; font-weight: 700; text-decoration: none;
-  transition: transform .25s, box-shadow .25s;
-}
+.about-tag { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 999px; padding: .3rem .9rem; font-size: .72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
+.about-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem; background: white; color: var(--blue); padding: .6rem 1.4rem; border-radius: 999px; font-size: .82rem; font-weight: 700; text-decoration: none; transition: transform .25s, box-shadow .25s; }
 .about-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 
 .impact { background: white; }
 .impact-inner { text-align: center; max-width: 700px; margin: 0 auto; }
 .impact-inner > p { color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
-.raised-display {
-  background: linear-gradient(135deg, #e8f2ff 0%, #d0e8ff 100%);
-  border-radius: 24px; padding: 3rem 2rem;
-  margin-bottom: 2rem; position: relative; overflow: hidden;
-}
-.raised-display::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--blue), var(--electric));
-}
-.raised-amount {
-  font-family: 'Syne', sans-serif;
-  font-size: 5.5rem; font-weight: 800;
-  color: var(--blue); line-height: 1;
-  display: block; margin-bottom: .5rem;
-}
+.raised-display { background: linear-gradient(135deg, #e8f2ff 0%, #d0e8ff 100%); border-radius: 24px; padding: 3rem 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+.raised-display::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--electric)); }
+.raised-amount { font-family: 'Syne', sans-serif; font-size: 5.5rem; font-weight: 800; color: var(--blue); line-height: 1; display: block; margin-bottom: .5rem; }
 .raised-sub { color: var(--muted); font-size: .9rem; }
 .progress-wrap { background: white; border-radius: 999px; height: 8px; margin: 2rem auto 0; max-width: 400px; overflow: hidden; }
-.progress-bar {
-  height: 100%; border-radius: 999px;
-  background: linear-gradient(90deg, var(--blue), var(--electric));
-  width: 0; transition: width 1.8s cubic-bezier(.4,0,.2,1);
-}
+.progress-bar { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--blue), var(--electric)); width: 0; transition: width 1.8s cubic-bezier(.4,0,.2,1); }
 .impact-note { color: var(--muted); font-size: .82rem; margin-top: .75rem; }
 
 .donate-section { background: var(--off-white); padding: 5rem 2rem; text-align: center; }
-.donate-note {
-  display: block;
-  background: var(--sky); border-left: 4px solid var(--blue);
-  border-radius: 8px; padding: .85rem 1.4rem;
-  color: var(--blue); font-size: .85rem; font-weight: 600;
-  max-width: 480px; margin: 0 auto 3rem; text-align: center;
-}
-.donate-cards {
-  display: flex; flex-direction: row; gap: 1rem; justify-content: center; flex-wrap: wrap;
-}
-.donate-card {
-  display: inline-flex; align-items: center; gap: .75rem;
-  padding: 1rem 2rem; border-radius: 999px;
-  font-weight: 700; font-size: .95rem;
-  text-decoration: none; transition: all .3s;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  border: none; cursor: pointer;
-}
+.donate-note { display: block; background: var(--sky); border-left: 4px solid var(--blue); border-radius: 8px; padding: .85rem 1.4rem; color: var(--blue); font-size: .85rem; font-weight: 600; max-width: 480px; margin: 0 auto 3rem; text-align: center; }
+.donate-cards { display: flex; flex-direction: row; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.donate-card { display: inline-flex; align-items: center; gap: .75rem; padding: 1rem 2rem; border-radius: 999px; font-weight: 700; font-size: .95rem; text-decoration: none; transition: all .3s; box-shadow: 0 8px 24px rgba(0,0,0,0.12); border: none; cursor: pointer; }
 .donate-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.18); }
 .donate-card-venmo { background: #008CFF; color: white; }
 .donate-card-paypal { background: #003087; color: white; }
-.donate-card-icon {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+.donate-card-icon { width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
 .updates-section { background: white; }
 .updates-feed { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; max-width: 720px; }
-.update-card {
-  display: flex; align-items: center; gap: 1.5rem;
-  background: var(--off-white); border: 1.5px solid #e8edf5;
-  border-radius: 18px; padding: 1.5rem 1.75rem;
-  text-decoration: none; color: var(--text);
-  transition: all .3s;
-}
+.update-card { display: flex; align-items: center; gap: 1.5rem; background: var(--off-white); border: 1.5px solid #e8edf5; border-radius: 18px; padding: 1.5rem 1.75rem; text-decoration: none; color: var(--text); transition: all .3s; }
 .update-card:hover { border-color: var(--blue-bright); transform: translateX(4px); box-shadow: 0 12px 32px rgba(30,111,255,0.1); }
-.update-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  background: linear-gradient(135deg, var(--blue), var(--electric));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; flex-shrink: 0; color: white;
-}
+.update-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--electric)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
 .update-body { flex: 1; }
 .update-tag { font-size: .7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: .25rem; }
 .update-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .25rem; }
 .update-desc { font-size: .85rem; color: var(--muted); line-height: 1.5; }
 .update-arrow { font-size: 1.3rem; color: var(--blue); flex-shrink: 0; }
 
+.performances { background: var(--off-white); }
 .perf-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-.perf-card {
-  background: white; border-radius: 20px; padding: 2rem;
-  border: 1.5px solid #e8edf5;
-  transition: all .3s; position: relative; overflow: hidden;
-}
+.perf-card { background: white; border-radius: 20px; padding: 2rem; border: 1.5px solid #e8edf5; transition: all .3s; }
 .perf-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(30,111,255,0.1); border-color: rgba(30,111,255,0.25); }
-.perf-card.active {
-  background: linear-gradient(135deg, var(--blue), #0099cc);
-  border-color: transparent;
-}
+.perf-card.active { background: linear-gradient(135deg, var(--blue), #0099cc); border-color: transparent; }
 .perf-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-.perf-loc {
-  font-size: .72rem; font-weight: 600; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--blue); margin-bottom: .4rem;
-}
+.perf-loc { font-size: .72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: .4rem; }
 .perf-card.active .perf-loc { color: rgba(255,255,255,0.7); }
 .perf-card h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; margin-bottom: .6rem; color: var(--text); }
 .perf-card.active h3 { color: white; }
 .perf-card p { font-size: .85rem; line-height: 1.7; color: var(--muted); }
 .perf-card.active p { color: rgba(255,255,255,0.8); }
-.perf-badge {
-  display: inline-block; margin-top: 1rem;
-  background: rgba(0,214,143,0.12); color: var(--green);
-  border-radius: 999px; padding: .3rem .85rem;
-  font-size: .72rem; font-weight: 700;
-}
+.perf-badge { display: inline-block; margin-top: 1rem; background: rgba(0,214,143,0.12); color: var(--green); border-radius: 999px; padding: .3rem .85rem; font-size: .72rem; font-weight: 700; }
 .perf-card.active .perf-badge { background: rgba(255,255,255,0.2); color: white; }
-.perf-coming {
-  border: 2px dashed #d0daf0; background: transparent;
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; text-align: center;
-  color: var(--muted); min-height: 200px; font-size: .85rem; gap: .5rem;
-}
+.perf-coming { border: 2px dashed #d0daf0; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--muted); min-height: 200px; font-size: .85rem; gap: .5rem; }
 .perf-coming span { font-size: 1.8rem; }
 
 .hospital { background: white; }
@@ -337,22 +151,14 @@ section { padding: 7rem 2rem; }
 .hospital-text p { color: var(--muted); line-height: 1.85; font-size: .97rem; margin-bottom: 1rem; }
 .hospital-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
 .pill { background: var(--sky); color: var(--blue); border-radius: 999px; padding: .4rem 1rem; font-size: .78rem; font-weight: 600; }
-.hospital-quote {
-  background: linear-gradient(135deg, #1e6fff, #00b4ff);
-  border-radius: 24px; padding: 2.5rem; color: white;
-  font-size: 1.25rem; font-family: 'Syne', sans-serif; line-height: 1.5;
-  position: relative;
-}
+.hospital-quote { background: linear-gradient(135deg, #1e6fff, #00b4ff); border-radius: 24px; padding: 2.5rem; color: white; font-size: 1.25rem; font-family: 'Syne', sans-serif; line-height: 1.5; position: relative; }
 .hospital-quote::before { content: '"'; font-size: 6rem; position: absolute; top: -1rem; left: 1.5rem; opacity: .2; font-family: Georgia; }
 .hospital-quote .attr { font-size: .78rem; font-weight: 400; opacity: .7; margin-top: 1rem; display: block; font-family: 'Inter', sans-serif; }
 
 .expand { background: var(--off-white); }
 .expand-lead { color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 3rem; }
 .expand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-.expand-card {
-  background: white; border-radius: 20px; padding: 1.75rem;
-  border: 1.5px solid #e8edf5; transition: all .3s;
-}
+.expand-card { background: white; border-radius: 20px; padding: 1.75rem; border: 1.5px solid #e8edf5; transition: all .3s; }
 .expand-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(30,111,255,0.1); }
 .expand-card .icon { font-size: 1.75rem; margin-bottom: .75rem; display: block; }
 .expand-card h4 { font-family: 'Syne', sans-serif; font-size: 1rem; margin-bottom: .5rem; }
@@ -363,19 +169,8 @@ section { padding: 7rem 2rem; }
 .youtube-section .eyebrow { color: rgba(255,255,255,0.7); }
 .youtube-section > .section-inner > p { color: rgba(255,255,255,0.82); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8; }
 .yt-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.yt-btn {
-  display: inline-flex; align-items: center; gap: .75rem;
-  background: white; color: #ff0000;
-  padding: 1rem 2.2rem; border-radius: 999px;
-  text-decoration: none; font-weight: 800; font-size: .95rem;
-  transition: all .3s; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-}
-.yt-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 40px rgba(0,0,0,0.2); }
-.yt-btn-outline {
-  background: rgba(255,255,255,0.15); color: white;
-  border: 1.5px solid rgba(255,255,255,0.4);
-}
-.yt-btn-outline:hover { background: rgba(255,255,255,0.25); color: white; }
+.yt-btn { display: inline-flex; align-items: center; gap: .75rem; background: white; color: #ff0000; padding: 1rem 2.2rem; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: .95rem; transition: all .3s; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+.yt-btn:hover { transform: translateY(-3px) scale(1.03); }
 
 footer { background: var(--text); padding: 3.5rem 2rem; text-align: center; }
 .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: white; margin-bottom: .5rem; }
@@ -396,60 +191,24 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
   nav { padding: .85rem 1.25rem; }
   .nav-logo { font-size: 1rem; }
   .nav-links { display: none; }
-  .nav-cta { font-size: .72rem; padding: .4rem .9rem; }
-
-  .hero { padding: 6rem 1.25rem 4rem; min-height: auto; }
-  .hero-eyebrow { font-size: .68rem; padding: .4rem .9rem; margin-bottom: 1.25rem; }
-  .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); letter-spacing: -0.5px; margin-bottom: 1.1rem; }
-  .hero-sub { font-size: .95rem; margin-bottom: 2rem; }
+  .hero { padding: 6rem 1.25rem 4rem; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
   .hero-btns { flex-direction: column; width: 100%; max-width: 280px; }
-  .btn { width: 100%; text-align: center; padding: .8rem 1.5rem; }
+  .btn { width: 100%; text-align: center; }
   .hero-scroll { display: none; }
-
-  .stats-strip { padding: 1.5rem 1rem; gap: .5rem; }
+  .stats-strip { padding: 1.5rem 1rem; }
   .stat-item { padding: .75rem 1rem; min-width: 42%; flex: 1 1 42%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
   .stat-num { font-size: 1.8rem; }
-  .stat-label { font-size: .62rem; }
-
   section { padding: 3.5rem 1.25rem; }
-  .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-  .eyebrow { font-size: .65rem; letter-spacing: 2px; }
-
   .about-layout, .hospital-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .about-visual { padding: 2rem 1.5rem; }
-  .about-visual::before { font-size: 5rem; }
-
-  .raised-display { padding: 2rem 1.25rem; }
   .raised-amount { font-size: 3.2rem; }
-
   .donate-cards { flex-direction: column; align-items: stretch; }
-  .donate-card { justify-content: center; }
-  .donate-note { font-size: .8rem; padding: .75rem 1rem; }
-
-  .updates-feed { gap: 1rem; }
-  .update-card { flex-direction: row; align-items: flex-start; padding: 1.1rem 1.25rem; gap: 1rem; }
+  .update-card { padding: 1.1rem 1.25rem; gap: 1rem; }
   .update-icon { width: 38px; height: 38px; font-size: 1.1rem; }
-  .update-title { font-size: .95rem; }
-  .update-desc { font-size: .8rem; }
   .update-arrow { display: none; }
-
   .perf-cards, .expand-grid { grid-template-columns: 1fr; }
-  .perf-card { padding: 1.5rem; }
-
-  .hospital-pills { gap: .4rem; }
-  .pill { font-size: .72rem; padding: .35rem .8rem; }
-  .hospital-quote { padding: 1.75rem; font-size: 1rem; }
-
-  .youtube-section { padding: 3.5rem 1.25rem; }
-  .yt-btn { font-size: .85rem; padding: .85rem 1.5rem; width: 100%; justify-content: center; }
+  .yt-btn { width: 100%; justify-content: center; }
   .yt-links { flex-direction: column; align-items: stretch; }
-
-  footer { padding: 2.5rem 1.25rem; }
-  .footer-links { gap: 1rem; row-gap: .75rem; }
-}
-
-@media(max-width:420px) {
-  .stat-item { min-width: 100%; flex: 1 1 100%; }
 }
 </style>
 </head>
@@ -460,8 +219,8 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
   <ul class="nav-links">
     <li><span class="navlink" data-target="about">About</span></li>
     <li><span class="navlink" data-target="impact">Impact</span></li>
-    <li><span class="navlink" data-target="performances">Performances</span></li>
     <li><span class="navlink" data-target="updates">Updates</span></li>
+    <li><span class="navlink" data-target="performances">Performances</span></li>
     <li><span class="navlink" data-target="cause">The Cause</span></li>
     <li><span class="navlink" data-target="expand">Future</span></li>
     <li><span class="navlink" data-target="donate" style="color:#ffdd57 !important;font-weight:700;">Donate</span></li>
@@ -475,7 +234,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
   <div class="hero-blob blob3"></div>
   <div class="hero-eyebrow"><span>🎻</span> A violin. A mission. Real impact.</div>
   <h1>Music heals in more<br/>ways than <span class="highlight">one.</span></h1>
-  <p class="hero-sub">Sofia V is a 17-year-old violinist performing in Central Park and on YouTube, raising money for patients who can't afford to get better.</p>
+  <p class="hero-sub">Sofia V is a 17-year-old violinist performing in Central Park and on YouTube, raising money for patients who cannot afford to get better.</p>
   <div class="hero-btns">
     <span class="btn btn-white" data-target="impact">See Our Impact</span>
     <span class="btn btn-ghost" data-target="about">Our Story</span>
@@ -484,9 +243,9 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
 </section>
 
 <div class="stats-strip">
-  <div class="stat-item reveal"><span class="stat-num">$696</span><span class="stat-label">Raised So Far</span></div>
-  <div class="stat-item reveal reveal-delay-1"><span class="stat-num">2</span><span class="stat-label">Performance + YouTube</span></div>
-  <div class="stat-item reveal reveal-delay-2"><span class="stat-num">1</span><span class="stat-label">Donation Sent</span></div>
+  <div class="stat-item reveal"><span class="stat-num">$1,370</span><span class="stat-label">Raised So Far</span></div>
+  <div class="stat-item reveal reveal-delay-1"><span class="stat-num">3</span><span class="stat-label">Performances + YouTube</span></div>
+  <div class="stat-item reveal reveal-delay-2"><span class="stat-num">2</span><span class="stat-label">Donations Sent</span></div>
   <div class="stat-item reveal reveal-delay-3"><span class="stat-num">100%</span><span class="stat-label">Goes to Patients</span></div>
 </div>
 
@@ -497,7 +256,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
         <span class="eyebrow">Who We Are</span>
         <h2 class="section-title">Where music meets medicine</h2>
         <p>Sofia V has been playing violin since age 8. During COVID, she started recording videos, and what began as a way to share music became a YouTube channel, then a street performance in Central Park, and now a full-on fundraising mission.</p>
-        <p>Music 4 Medicine is about the idea that music doesn't just move you emotionally. It can change the material reality of someone's life. Every dollar raised goes directly to Bergen New Bridge Medical Center to keep care accessible for those who need it most.</p>
+        <p>Music 4 Medicine is about the idea that music does not just move you emotionally. It can change the material reality of someone's life. Every dollar raised goes directly to Bergen New Bridge Medical Center to keep care accessible for those who need it most.</p>
         <p><strong>Music as a force for healing, in every sense of the word.</strong></p>
       </div>
       <div class="about-visual reveal reveal-delay-1">
@@ -515,12 +274,12 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
     <div class="impact-inner">
       <span class="eyebrow reveal">Real Impact</span>
       <h2 class="section-title reveal">Every dollar goes straight to patients</h2>
-      <p class="reveal">No admin fees. No overhead. Just music turning into medicine for people who can't afford care.</p>
+      <p class="reveal">No admin fees. No overhead. Just music turning into medicine for people who cannot afford care.</p>
       <div class="raised-display reveal">
         <span class="raised-amount" id="counter">$0</span>
         <span class="raised-sub">raised across performances and YouTube donations</span>
         <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
-        <p class="impact-note">First donation of $696 sent to Bergen New Bridge</p>
+        <p class="impact-note">2 donations totaling $1,370 sent to Bergen New Bridge</p>
       </div>
     </div>
   </div>
@@ -532,7 +291,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
     <h2 class="section-title reveal">Every dollar makes a difference</h2>
     <p class="reveal" style="color:var(--muted);max-width:480px;margin:0 auto 2rem;line-height:1.8;">100% of donations go directly to Bergen New Bridge Medical Center to support underserved patients.</p>
     <div class="donate-note reveal">
-      Please include a note saying <strong>"Music 4 Medicine"</strong> with your donation so it can be tracked and credited!
+      Please include a note saying <strong>Music 4 Medicine</strong> with your donation so it can be tracked and credited!
     </div>
     <div class="donate-cards reveal">
       <a href="https://venmo.com/u/sofiav31" target="_blank" class="donate-card donate-card-venmo">
@@ -557,12 +316,21 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
     <h2 class="section-title reveal">Follow along, post by post</h2>
     <p class="reveal" style="color:var(--muted);max-width:540px;line-height:1.8;">A running log of performances, donations, and milestones as the mission grows.</p>
     <div class="updates-feed reveal">
+      <a href="http://youtube.com/post/UgkxmFXoS4AUeazy2bYPYviANjwGoQ5YmOtq" target="_blank" class="update-card">
+        <div class="update-icon">💙</div>
+        <div class="update-body">
+          <p class="update-tag">Milestone</p>
+          <p class="update-title">Second Donation Sent</p>
+          <p class="update-desc">A second donation of $674 was sent to Bergen New Bridge, raised from two Sunday performances and YouTube donations.</p>
+        </div>
+        <div class="update-arrow">→</div>
+      </a>
       <a href="http://youtube.com/post/Ugkx1EzDeijnFeC_hCPa7EUwGVNw4UjXA0II" target="_blank" class="update-card">
         <div class="update-icon">💙</div>
         <div class="update-body">
           <p class="update-tag">Milestone</p>
           <p class="update-title">First Donation Sent</p>
-          <p class="update-desc">Confirmation that the first donation, $696, was sent to Bergen New Bridge Medical Center.</p>
+          <p class="update-desc">Confirmation that the first donation of $696 was sent to Bergen New Bridge Medical Center.</p>
         </div>
         <div class="update-arrow">→</div>
       </a>
@@ -610,13 +378,27 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
         <span class="perf-badge">$263 Raised</span>
       </div>
       <div class="perf-card active reveal reveal-delay-1">
+        <span class="perf-icon">🎻</span>
+        <p class="perf-loc">Central Park, NYC</p>
+        <h3>Performance #2</h3>
+        <p>Sofia returned to Central Park for her second Music 4 Medicine performance, continuing to grow the mission one song at a time.</p>
+        <span class="perf-badge">$92 Raised</span>
+      </div>
+      <div class="perf-card active reveal reveal-delay-2">
+        <span class="perf-icon">🎻</span>
+        <p class="perf-loc">Central Park, NYC</p>
+        <h3>Performance #3</h3>
+        <p>Sofia's third Music 4 Medicine performance in Central Park, bringing the total raised from live performances even higher.</p>
+        <span class="perf-badge">$124 Raised</span>
+      </div>
+      <div class="perf-card active reveal">
         <span class="perf-icon">🎥</span>
         <p class="perf-loc">YouTube, Enchanted Violin</p>
         <h3>YouTube Donations</h3>
         <p>Viewers of Sofia's YouTube channel contributed directly to the mission, helping push the total raised even further toward helping Bergen New Bridge patients.</p>
-        <span class="perf-badge">$433 Raised</span>
+        <span class="perf-badge">$891 Raised</span>
       </div>
-      <div class="perf-card perf-coming reveal reveal-delay-2">
+      <div class="perf-card perf-coming reveal reveal-delay-1">
         <span>📅</span>
         <p>Follow on YouTube for updates.</p>
       </div>
@@ -656,17 +438,17 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
     <div class="expand-grid">
       <div class="expand-card reveal"><span class="icon">🎪</span><h4>More Performances</h4><p>Expanding beyond Central Park to parks, events, and venues across NJ and NYC.</p></div>
       <div class="expand-card reveal reveal-delay-1"><span class="icon">🤝</span><h4>Artist Collaborations</h4><p>Partnering with other musicians to amplify the sound, and the impact.</p></div>
-      <div class="expand-card reveal reveal-delay-2"><span class="icon">🎬</span><h4>YouTube Fundraisers</h4><p>Using live streams and YouTube's tools to reach a global audience.</p></div>
+      <div class="expand-card reveal reveal-delay-2"><span class="icon">🎬</span><h4>YouTube Fundraisers</h4><p>Using live streams and YouTube tools to reach a global audience.</p></div>
       <div class="expand-card reveal"><span class="icon">🏥</span><h4>Hospital Visits</h4><p>Bringing live music directly to patients, because healing can happen just from listening.</p></div>
       <div class="expand-card reveal reveal-delay-1"><span class="icon">🎉</span><h4>Charity Concerts</h4><p>Organized events with a bigger audience, bigger impact, and bigger donations.</p></div>
-      <div class="expand-card reveal reveal-delay-2"><span class="icon">💡</span><h4>Your Idea</h4><p>Have a way to help grow Music 4 Medicine? We're always open to new ideas.</p></div>
+      <div class="expand-card reveal reveal-delay-2"><span class="icon">💡</span><h4>Your Idea</h4><p>Have a way to help grow Music 4 Medicine? We are always open to new ideas.</p></div>
     </div>
   </div>
 </section>
 
 <section class="youtube-section" id="watch">
   <div class="section-inner">
-    <span class="eyebrow reveal">Watch & Support</span>
+    <span class="eyebrow reveal">Watch and Support</span>
     <h2 class="section-title reveal">Follow Sofia's journey</h2>
     <p class="reveal">Every view, every subscriber, every share helps grow this mission.</p>
     <div class="yt-links reveal">
@@ -678,7 +460,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
   </div>
 </section>
 
-<section style="background:var(--off-white); padding:5rem 2rem; text-align:center;" id="contact">
+<section style="background:var(--off-white);padding:5rem 2rem;text-align:center;" id="contact">
   <div class="section-inner">
     <span class="eyebrow reveal">Get Involved</span>
     <h2 class="section-title reveal">Ideas? Collaborations? Say hello.</h2>
@@ -693,6 +475,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
   <div class="footer-links">
     <span class="navlink" data-target="about">About</span>
     <span class="navlink" data-target="impact">Impact</span>
+    <span class="navlink" data-target="updates">Updates</span>
     <span class="navlink" data-target="performances">Performances</span>
     <span class="navlink" data-target="cause">The Cause</span>
     <span class="navlink" data-target="expand">Future</span>
@@ -706,9 +489,9 @@ function goTo(id) {
   if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
 }
 
-var navEls = document.querySelectorAll('.navlink, [data-target]');
-for (var i = 0; i < navEls.length; i++) {
-  navEls[i].addEventListener('click', function() {
+var clickEls = document.querySelectorAll('.navlink, [data-target]');
+for (var i = 0; i < clickEls.length; i++) {
+  clickEls[i].addEventListener('click', function() {
     goTo(this.getAttribute('data-target'));
   });
 }
@@ -717,18 +500,18 @@ window.addEventListener('scroll', function() {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-var revealObserver = new IntersectionObserver(function(entries) {
+var revealObs = new IntersectionObserver(function(entries) {
   for (var j = 0; j < entries.length; j++) {
     if (entries[j].isIntersecting) { entries[j].target.classList.add('visible'); }
   }
 }, { threshold: 0.12 });
 var revealEls = document.querySelectorAll('.reveal');
-for (var k = 0; k < revealEls.length; k++) { revealObserver.observe(revealEls[k]); }
+for (var k = 0; k < revealEls.length; k++) { revealObs.observe(revealEls[k]); }
 
 var counterEl = document.getElementById('counter');
 var pbar = document.getElementById('pbar');
 var counted = false;
-var counterObserver = new IntersectionObserver(function(entries) {
+var countObs = new IntersectionObserver(function(entries) {
   if (entries[0].isIntersecting && !counted) {
     counted = true;
     pbar.style.width = '70%';
@@ -737,14 +520,15 @@ var counterObserver = new IntersectionObserver(function(entries) {
       if (!startTime) { startTime = ts; }
       var p = Math.min((ts - startTime) / 1800, 1);
       var ease = 1 - Math.pow(1 - p, 3);
-      counterEl.textContent = '$' + Math.floor(ease * 696);
+      var val = Math.floor(ease * 1370);
+      counterEl.textContent = '$' + val.toLocaleString();
       if (p < 1) { requestAnimationFrame(step); }
-      else { counterEl.textContent = '$696'; }
+      else { counterEl.textContent = '$1,370'; }
     }
     requestAnimationFrame(step);
   }
 }, { threshold: 0.5 });
-counterObserver.observe(counterEl);
+countObs.observe(counterEl);
 </script>
 </body>
 </html>
