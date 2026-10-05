@@ -22,12 +22,7 @@
 * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 200;
-  padding: 1rem 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background .4s, box-shadow .4s;
-}
+nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; transition: background .4s, box-shadow .4s; }
 nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(30,111,255,0.08); }
 .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--white); transition: color .4s; cursor: pointer; }
 nav.scrolled .nav-logo { color: var(--blue); }
@@ -38,29 +33,13 @@ nav.scrolled .nav-links .navlink { color: var(--muted); }
 .nav-cta { background: white; color: var(--blue) !important; padding: .45rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .3s; }
 nav.scrolled .nav-cta { background: var(--blue); color: white !important; }
 
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1e6fff 0%, #38a8e0 50%, #a8dff5 100%);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
-}
+.hero { min-height: 100vh; background: linear-gradient(135deg, #1e6fff 0%, #38a8e0 50%, #a8dff5 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
 .hero-blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .35; pointer-events: none; }
 .blob1 { width: 500px; height: 500px; background: #00d2ff; top: -100px; right: -100px; }
 .blob2 { width: 400px; height: 400px; background: #1e6fff; bottom: -80px; left: -80px; }
 .blob3 { width: 300px; height: 300px; background: #ffffff; top: 40%; left: 10%; opacity: .12; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.35); color: white;
-  font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: .45rem 1.1rem; border-radius: 999px; margin-bottom: 2rem;
-  animation: fadeUp .8s ease both;
-}
-.hero h1 {
-  font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 6vw, 5rem);
-  font-weight: 800; color: white; line-height: 1.05; letter-spacing: -1px;
-  margin-bottom: 1.5rem; animation: fadeUp .8s .15s ease both;
-}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.35); color: white; font-size: .78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: .45rem 1.1rem; border-radius: 999px; margin-bottom: 2rem; animation: fadeUp .8s ease both; }
+.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 800; color: white; line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.5rem; animation: fadeUp .8s .15s ease both; }
 .hero h1 .highlight { position: relative; display: inline-block; }
 .hero h1 .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.4); }
 .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.88); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; animation: fadeUp .8s .3s ease both; }
@@ -243,9 +222,9 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
 </section>
 
 <div class="stats-strip">
-  <div class="stat-item reveal"><span class="stat-num">$1,370</span><span class="stat-label">Raised So Far</span></div>
-  <div class="stat-item reveal reveal-delay-1"><span class="stat-num">3</span><span class="stat-label">Performances + YouTube</span></div>
-  <div class="stat-item reveal reveal-delay-2"><span class="stat-num">2</span><span class="stat-label">Donations Sent</span></div>
+  <div class="stat-item reveal"><span class="stat-num">$1,606</span><span class="stat-label">Raised So Far</span></div>
+  <div class="stat-item reveal reveal-delay-1"><span class="stat-num">4</span><span class="stat-label">Performances</span></div>
+  <div class="stat-item reveal reveal-delay-2"><span class="stat-num">3</span><span class="stat-label">Donations Sent</span></div>
   <div class="stat-item reveal reveal-delay-3"><span class="stat-num">100%</span><span class="stat-label">Goes to Patients</span></div>
 </div>
 
@@ -277,9 +256,9 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
       <p class="reveal">No admin fees. No overhead. Just music turning into medicine for people who cannot afford care.</p>
       <div class="raised-display reveal">
         <span class="raised-amount" id="counter">$0</span>
-        <span class="raised-sub">raised across performances and YouTube donations</span>
+        <span class="raised-sub">raised across 4 performances and YouTube donations</span>
         <div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
-        <p class="impact-note">2 donations totaling $1,370 sent to Bergen New Bridge</p>
+        <p class="impact-note">3 donations totaling $1,606 sent to Bergen New Bridge</p>
       </div>
     </div>
   </div>
@@ -290,20 +269,14 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
     <span class="eyebrow reveal">Support the Mission</span>
     <h2 class="section-title reveal">Every dollar makes a difference</h2>
     <p class="reveal" style="color:var(--muted);max-width:480px;margin:0 auto 2rem;line-height:1.8;">100% of donations go directly to Bergen New Bridge Medical Center to support underserved patients.</p>
-    <div class="donate-note reveal">
-      Please include a note saying <strong>Music 4 Medicine</strong> with your donation so it can be tracked and credited!
-    </div>
+    <div class="donate-note reveal">Please include a note saying <strong>Music 4 Medicine</strong> with your donation so it can be tracked and credited!</div>
     <div class="donate-cards reveal">
       <a href="https://venmo.com/u/sofiav31" target="_blank" class="donate-card donate-card-venmo">
-        <span class="donate-card-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.1 1.6c.4.7.6 1.5.6 2.5 0 3.1-2.6 7.2-4.8 10H9.6L7.1 2.5l5-.5 1.3 10.2c1.2-2 2.7-5.1 2.7-7.2 0-1.2-.2-2-.5-2.6l3.5-.8z"/></svg>
-        </span>
+        <span class="donate-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.1 1.6c.4.7.6 1.5.6 2.5 0 3.1-2.6 7.2-4.8 10H9.6L7.1 2.5l5-.5 1.3 10.2c1.2-2 2.7-5.1 2.7-7.2 0-1.2-.2-2-.5-2.6l3.5-.8z"/></svg></span>
         Donate via Venmo
       </a>
       <a href="https://www.paypal.com/paypalme/SofiaVolosatova" target="_blank" class="donate-card donate-card-paypal">
-        <span class="donate-card-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M7.1 22H3.5L6 7h6.3c2.7 0 4.7 1.8 4.3 4.7-.5 3.5-3 5.3-6 5.3H8.4L7.1 22zm1.7-6.7h1.6c1.4 0 2.5-.8 2.7-2.3.2-1.2-.5-2-1.8-2H9.7l-.9 4.3z"/></svg>
-        </span>
+        <span class="donate-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M7.1 22H3.5L6 7h6.3c2.7 0 4.7 1.8 4.3 4.7-.5 3.5-3 5.3-6 5.3H8.4L7.1 22zm1.7-6.7h1.6c1.4 0 2.5-.8 2.7-2.3.2-1.2-.5-2-1.8-2H9.7l-.9 4.3z"/></svg></span>
         Donate via PayPal
       </a>
     </div>
@@ -374,31 +347,38 @@ footer p { color: rgba(255,255,255,0.4); font-size: .82rem; margin-bottom: 1.5re
         <span class="perf-icon">🎻</span>
         <p class="perf-loc">Central Park, NYC</p>
         <h3>Performance #1</h3>
-        <p>Sofia's first Music 4 Medicine street performance in Central Park raised $263 for Bergen New Bridge. While Sofia has performed on the streets before, this was the first dedicated to the mission.</p>
+        <p>Sofia's first Music 4 Medicine street performance in Central Park. While Sofia has performed on the streets before, this was the first dedicated to the mission.</p>
         <span class="perf-badge">$263 Raised</span>
       </div>
-      <div class="perf-card active reveal reveal-delay-1">
-        <span class="perf-icon">🎻</span>
+      <div class="perf-card active reveal">
+        <span class="perf-icon">🎻🎻</span>
         <p class="perf-loc">Central Park, NYC</p>
         <h3>Performance #2</h3>
-        <p>Sofia returned to Central Park for her second Music 4 Medicine performance, continuing to grow the mission one song at a time.</p>
+        <p>Sofia teamed up with a fellow cellist for her second Music 4 Medicine performance, bringing a duo sound to Central Park.</p>
         <span class="perf-badge">$92 Raised</span>
       </div>
-      <div class="perf-card active reveal reveal-delay-2">
+      <div class="perf-card active reveal">
         <span class="perf-icon">🎻</span>
         <p class="perf-loc">Central Park, NYC</p>
         <h3>Performance #3</h3>
-        <p>Sofia's third Music 4 Medicine performance in Central Park, bringing the total raised from live performances even higher.</p>
+        <p>Sofia returned to Central Park for her third Music 4 Medicine performance, continuing to grow the mission.</p>
         <span class="perf-badge">$124 Raised</span>
+      </div>
+      <div class="perf-card active reveal">
+        <span class="perf-icon">🎻🎻</span>
+        <p class="perf-loc">Central Park, NYC</p>
+        <h3>Performance #4</h3>
+        <p>Sofia performed alongside a fellow cellist for her fourth Music 4 Medicine performance in Central Park.</p>
+        <span class="perf-badge">$236 Raised</span>
       </div>
       <div class="perf-card active reveal">
         <span class="perf-icon">🎥</span>
         <p class="perf-loc">YouTube, Enchanted Violin</p>
         <h3>YouTube Donations</h3>
-        <p>Viewers of Sofia's YouTube channel contributed directly to the mission, helping push the total raised even further toward helping Bergen New Bridge patients.</p>
+        <p>Viewers of Sofia's YouTube channel contributed directly to the mission, helping push the total raised toward helping Bergen New Bridge patients.</p>
         <span class="perf-badge">$891 Raised</span>
       </div>
-      <div class="perf-card perf-coming reveal reveal-delay-1">
+      <div class="perf-card perf-coming reveal">
         <span>📅</span>
         <p>Follow on YouTube for updates.</p>
       </div>
@@ -488,18 +468,15 @@ function goTo(id) {
   var el = document.getElementById(id);
   if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
 }
-
 var clickEls = document.querySelectorAll('.navlink, [data-target]');
 for (var i = 0; i < clickEls.length; i++) {
   clickEls[i].addEventListener('click', function() {
     goTo(this.getAttribute('data-target'));
   });
 }
-
 window.addEventListener('scroll', function() {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
-
 var revealObs = new IntersectionObserver(function(entries) {
   for (var j = 0; j < entries.length; j++) {
     if (entries[j].isIntersecting) { entries[j].target.classList.add('visible'); }
@@ -507,23 +484,22 @@ var revealObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.12 });
 var revealEls = document.querySelectorAll('.reveal');
 for (var k = 0; k < revealEls.length; k++) { revealObs.observe(revealEls[k]); }
-
 var counterEl = document.getElementById('counter');
 var pbar = document.getElementById('pbar');
 var counted = false;
 var countObs = new IntersectionObserver(function(entries) {
   if (entries[0].isIntersecting && !counted) {
     counted = true;
-    pbar.style.width = '70%';
+    pbar.style.width = '80%';
     var startTime = null;
     function step(ts) {
       if (!startTime) { startTime = ts; }
       var p = Math.min((ts - startTime) / 1800, 1);
       var ease = 1 - Math.pow(1 - p, 3);
-      var val = Math.floor(ease * 1370);
+      var val = Math.floor(ease * 1606);
       counterEl.textContent = '$' + val.toLocaleString();
       if (p < 1) { requestAnimationFrame(step); }
-      else { counterEl.textContent = '$1,370'; }
+      else { counterEl.textContent = '$1,606'; }
     }
     requestAnimationFrame(step);
   }
